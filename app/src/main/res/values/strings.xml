@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LevkoHomework10</string>
+    <string name="choose_item">Please, choose item \nin Navigator bar menu!</string>
+    <string name="ball">Ball</string>
+    <string name="list">List</string>
+    <string name="heart">Heart</string>
+</resources>

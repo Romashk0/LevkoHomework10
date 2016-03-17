@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/ball_M"
+        app:showAsAction="never"
+        android:title="@string/ball" />
+    <item
+        android:id="@+id/list_M"
+        app:showAsAction="never"
+        android:title="@string/list" />
+    <item
+        android:id="@+id/heart_M"
+        android:title="@string/heart"
+        app:showAsAction="never" />
+</menu>

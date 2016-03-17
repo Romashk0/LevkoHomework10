@@ -1,6 +1,5 @@
 package com.levko.roma.levkohomework10.fragments;
 
-import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -26,7 +25,8 @@ public class HeartFragment extends Fragment implements View.OnClickListener, See
     private SeekBar sbVisible, sbRotate, sbScale;
     private LinearLayout llVisible, llRotate, llScale;
     private boolean isVisibleShow = false, isRotateShow = false, isScaleShow = false;
-    private AnimatorSet firstAnim, secondAnim;
+    private final static int DURATION_ANIM = 800;
+    private final static float PARAMS = 100.0f;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -69,17 +69,17 @@ public class HeartFragment extends Fragment implements View.OnClickListener, See
     }
 
 
-    private void setAnim(LinearLayout container, SeekBar seekBar, Boolean state) {
+    private void setAnim(LinearLayout container, SeekBar seekBar, Boolean state, int duration) {
         if (state) {
-            final ObjectAnimator objAnim =
+            final ObjectAnimator objectAnimator =
                     ObjectAnimator.ofFloat(container, "translationX", 0.0f, -seekBar.getWidth());
-            objAnim.setDuration(1000);
-            objAnim.start();
+            objectAnimator.setDuration(duration);
+            objectAnimator.start();
         } else {
-            final ObjectAnimator objAnim =
+            final ObjectAnimator objectAnimator =
                     ObjectAnimator.ofFloat(container, "translationX", -seekBar.getWidth(), 0.0f);
-            objAnim.setDuration(1000);
-            objAnim.start();
+            objectAnimator.setDuration(duration);
+            objectAnimator.start();
         }
     }
 
@@ -87,16 +87,16 @@ public class HeartFragment extends Fragment implements View.OnClickListener, See
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_visible_HF:
-                setAnim(llVisible, sbVisible, isVisibleShow);
                 isVisibleShow = !isVisibleShow;
+                setAnim(llVisible, sbVisible, isVisibleShow, DURATION_ANIM);
                 break;
             case R.id.iv_rotate_HF:
-                setAnim(llRotate, sbRotate, isRotateShow);
                 isRotateShow = !isRotateShow;
+                setAnim(llRotate, sbRotate, isRotateShow, DURATION_ANIM);
                 break;
             case R.id.iv_scale_HF:
-                setAnim(llScale, sbScale, isScaleShow);
                 isScaleShow = !isScaleShow;
+                setAnim(llScale, sbScale, isScaleShow, DURATION_ANIM);
                 break;
         }
     }
@@ -106,14 +106,14 @@ public class HeartFragment extends Fragment implements View.OnClickListener, See
 
         switch (seekBar.getId()) {
             case R.id.sb_visible_HF:
-                mViewHeart.setAlpha(progress / 100.0f);
+                mViewHeart.setAlpha(progress / PARAMS);
                 break;
             case R.id.sb_rotate_HF:
                 mViewHeart.setRotation(progress);
                 break;
             case R.id.sb_scale_HF:
-                mViewHeart.setScaleX(progress / 100.0f);
-                mViewHeart.setScaleY(progress / 100.0f);
+                mViewHeart.setScaleX(progress / PARAMS);
+                mViewHeart.setScaleY(progress / PARAMS);
                 break;
         }
     }

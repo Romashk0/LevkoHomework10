@@ -109,7 +109,7 @@ public class HeartFragment extends Fragment implements View.OnClickListener, See
                 mViewHeart.setAlpha(progress / PARAMS);
                 break;
             case R.id.sb_rotate_HF:
-                mViewHeart.setRotation(progress);
+                mViewHeart.setRotation(progress / 0.27f);
                 break;
             case R.id.sb_scale_HF:
                 mViewHeart.setScaleX(progress / PARAMS);
